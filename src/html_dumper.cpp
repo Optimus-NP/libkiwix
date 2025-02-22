@@ -72,7 +72,7 @@ std::string HTMLDumper::dumpPlainHTML(kiwix::Filter filter) const
       contentId = urlEncode(nameMapper->getNameForId(bookId));
     } catch (...) {}
     const auto bookDescription = bookObj.getDescription();
-    const auto langCode = bookObj.getCommaSeparatedLanguages();
+    const auto langCode = (bookObj.getCommaSeparatedLanguages().find(',') != std::string::npos) ? "mul" : bookObj.getCommaSeparatedLanguages();
     const auto bookIconUrl = rootLocation + "/catalog/v2/illustration/" + bookId +  "/?size=48";
     const auto tags = bookObj.getTags();
     const auto downloadAvailable = (bookObj.getUrl() != "");
