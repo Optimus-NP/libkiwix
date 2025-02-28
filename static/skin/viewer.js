@@ -425,6 +425,10 @@ let viewerSetupComplete = false;
 
 function on_content_load() {
   if ( viewerSetupComplete ) {
+    const loader = document.getElementById("kiwix__loader");
+    const iframe = document.getElementById("content_iframe");
+    iframe.style.visibility = "visible";
+    loader.style.display = "none";
     handle_content_url_change();
   }
   setup_external_link_blocker();
